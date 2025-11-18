@@ -1,0 +1,20 @@
+name: C/C++ CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+   
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Compile tests
+      run: |
+        gcc multiplicar.c dividir.c operacoesmatematicas_test.c -o tests
+
+    - name: Run tests
+      run: ./tests
